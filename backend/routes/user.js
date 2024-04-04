@@ -93,6 +93,9 @@ router.put('/', authMiddleware, async (req, res) => {
             firstName: req.body.firstName,
             lastName: req.body.lastName
         });
+    res.json({
+        message: "User information updated successfully"
+    })
 })
 
 router.get('/bulk', async (req, res) => {

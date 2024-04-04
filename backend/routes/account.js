@@ -28,6 +28,7 @@ router.post('/transfer', authMiddleware, async (req, res) => {
             res.status(400).json({
                 message: "Invalid account"
             });
+            return;
         }
 
         const fromAccount = await Account.findOne({ userId: req.userId }).session(session);
@@ -36,6 +37,7 @@ router.post('/transfer', authMiddleware, async (req, res) => {
             res.status(400).json({
                 message: "Insufficient Balance"
             });
+            return;
         }
 
         await Account.updateOne({ userId: req.userId },
